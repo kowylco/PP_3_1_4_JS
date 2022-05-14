@@ -5,6 +5,11 @@
     <title th:text="${user}"></title>
 </head>
 <body>
+
+<form th:action="@{'/logout'}">
+    <input type="submit" value="Logout"/>
+</form>
+
 <table>
     <tr>
         <th>ID</th>

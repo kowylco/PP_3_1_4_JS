@@ -5,6 +5,11 @@
     <title>Новый пользователь</title>
 </head>
 <body>
+
+<form th:action="@{'/logout'}">
+    <input type="submit" value="Logout"/>
+</form>
+
 <form th:method="POST" th:action="@{/admin/user-create}" th:object="${user}">
     <label for="name">Имя: </label>
     <input type="text" th:field="*{username}" id="name"/>

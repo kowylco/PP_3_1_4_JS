@@ -5,12 +5,10 @@
     <title>Новый пользователь</title>
 </head>
 <body>
-<form th:method="POST" th:action="@{/user-create}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/user-create}" th:object="${user}">
     <label for="name">Имя: </label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <input type="text" th:field="*{username}" id="name"/>
     <br>
-    <label for="age">Возраст: </label>
-    <input type="number" th:field="*{age}" id="age"/>
     <br>
     <input type="submit" value="Сохранить">
 </form>

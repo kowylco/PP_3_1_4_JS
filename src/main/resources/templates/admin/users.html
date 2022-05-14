@@ -12,14 +12,14 @@
     <th>Имя</th>
   </tr>
   <tr th:each="user : ${users}">
-      <td><a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.id}"></a></td>
-      <td><a th:href="@{/user/{id}(id=${user.id})}" th:text="${user.username}"></a></td>
-      <td><a th:href="@{/user-update/{id}(id=${user.id})}">Изменить</a></td>
-      <td><a th:href="@{/user-delete/{id}(id=${user.id})}">Удалить</a></td>
+      <td><a th:href="@{/admin/user/{id}(id=${user.id})}" th:text="${user.id}"></a></td>
+      <td><a th:href="@{/admin/user/{id}(id=${user.id})}" th:text="${user.username}"></a></td>
+      <td><a th:href="@{/admin/user-update/{id}(id=${user.id})}">Изменить</a></td>
+      <td><a th:href="@{/admin/user-delete/{id}(id=${user.id})}">Удалить</a></td>
   </tr>
 </table>
 
-<p><a href="/user-create">Добавить нового пользователя</a></p>
+<p><a href="/admin/user-create">Добавить нового пользователя</a></p>
 
 </body>
 </html>

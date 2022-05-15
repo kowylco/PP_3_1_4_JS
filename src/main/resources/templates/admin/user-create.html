@@ -18,10 +18,10 @@
     <input type="text" th:field="*{lastname}" id="lastname"/>
     <br>
     <label for="age">Age</label>
-    <input type="text" th:field="*{age}" id="age"/>
+    <input type="number" th:field="*{age}" id="age"/>
     <br>
     <label for="email">Email</label>
-    <input type="text" th:field="*{email}" id="email"/>
+    <input type="email" th:field="*{email}" id="email"/>
     <br>
     <label for="password">Password</label>
     <input type="password" th:field="*{password}" id="password"/>
@@ -29,8 +29,8 @@
     <label>
         <select size="3" multiple="multiple" name="roles" id="roles">
             <option disabled>Roles:</option>
-            <option value="2">ADMIN</option>
             <option selected value="1">USER</option>
+            <option value="2">ADMIN</option>
         </select>
     </label>
     <br>

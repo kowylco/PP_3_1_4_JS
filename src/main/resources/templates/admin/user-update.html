@@ -11,12 +11,31 @@
 </form>
 
 <form th:method="POST" th:action="@{/admin/user-update}" th:object="${user}">
-    <label for="id">ID: </label>
+    <label for="id">First name</label>
     <input readonly type="number" th:field="*{id}" id="id"/>
     <br>
-    <label for="name">Имя: </label>
-    <input type="text" th:field="*{email}" id="name"/>
+    <label for="firstname">First name</label>
+    <input type="text" th:field="*{firstname}" id="firstname"/>
     <br>
+    <label for="lastname">Last name</label>
+    <input type="text" th:field="*{lastname}" id="lastname"/>
+    <br>
+    <label for="age">Age</label>
+    <input type="number" th:field="*{age}" id="age"/>
+    <br>
+    <label for="email">Email</label>
+    <input type="email" th:field="*{email}" id="email"/>
+    <br>
+    <label for="password">Password</label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <br>
+    <label>
+        <select size="3" multiple="multiple" name="roles" id="roles">
+            <option disabled>Roles:</option>
+            <option selected value="1">USER</option>
+            <option value="2">ADMIN</option>
+        </select>
+    </label>
     <br>
     <input type="submit" value="Сохранить изменения">
 </form>

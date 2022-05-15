@@ -27,8 +27,10 @@
       <td th:text="${user.lastname}"></td>
       <td th:text="${user.age}"></td>
       <td th:text="${user.email}"></td>
-      <td th:each="role : ${user.getRoles()} ">
-          <span th:text="${role.getName().substring(5)}"></span>
+      <td>
+          <span  th:each="role : ${user.getRoles()}">
+            <span th:text="${role.getName().substring(5)}"></span>
+          </span>
       </td>
       <td><a th:href="@{/admin/user-update/{id}(id=${user.id})}">Изменить</a></td>
       <td><a th:href="@{/admin/user-delete/{id}(id=${user.id})}">Удалить</a></td>

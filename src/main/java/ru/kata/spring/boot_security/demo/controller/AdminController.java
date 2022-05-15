@@ -12,11 +12,9 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 @RequestMapping("/admin")
 public class AdminController {
     private final UserService userService;
-    private final RoleService roleService;
     @Autowired
     public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
-        this.roleService = roleService;
     }
 
     @GetMapping("/")
@@ -42,8 +40,7 @@ public class AdminController {
     }
 
     @PostMapping("/user-create")
-    public String saveUser(@ModelAttribute("user") User user, @RequestParam(value = "roles") String[] roles) {
-        user.setRoles(roleService.getSetOfRoles(roles));
+    public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/admin/users";
     }

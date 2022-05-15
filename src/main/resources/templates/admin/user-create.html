@@ -11,11 +11,30 @@
 </form>
 
 <form th:method="POST" th:action="@{/admin/user-create}" th:object="${user}">
-    <label for="name">Имя: </label>
-    <input type="text" th:field="*{username}" id="name"/>
+    <label for="firstname">First name</label>
+    <input type="text" th:field="*{firstname}" id="firstname"/>
     <br>
+    <label for="lastname">Last name</label>
+    <input type="text" th:field="*{lastname}" id="lastname"/>
     <br>
-    <input type="submit" value="Сохранить">
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br>
+    <label for="password">Password</label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <br>
+    <label>
+        <select size="3" multiple="multiple" name="roles" id="roles">
+            <option disabled>Roles:</option>
+            <option value="2">ADMIN</option>
+            <option selected value="1">USER</option>
+        </select>
+    </label>
+    <br>
+    <input type="submit" value="Add new user">
 </form>
 </body>
 </html>

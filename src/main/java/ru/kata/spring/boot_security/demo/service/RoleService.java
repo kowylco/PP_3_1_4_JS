@@ -4,7 +4,9 @@ import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RoleService {
@@ -16,5 +18,13 @@ public class RoleService {
 
     public List<Role> getAllRoles() {
         return roleRepository.findAll();
+    }
+
+    public Set<Role> getSetOfRoles(String[] roles) {
+        Set<Role> roleSet = new HashSet<>();
+        for (String role : roles) {
+            roleSet.add(roleRepository.findByName(role));
+        }
+        return roleSet;
     }
 }

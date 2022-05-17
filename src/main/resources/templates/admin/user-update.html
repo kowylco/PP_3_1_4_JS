@@ -15,19 +15,19 @@
     <input readonly type="number" th:field="*{id}" id="id"/>
     <br>
     <label for="firstname">First name</label>
-    <input type="text" th:field="*{firstname}" id="firstname"/>
+    <input type="text" th:field="*{firstname}" id="firstname" required/>
     <br>
     <label for="lastname">Last name</label>
-    <input type="text" th:field="*{lastname}" id="lastname"/>
+    <input type="text" th:field="*{lastname}" id="lastname" required/>
     <br>
     <label for="age">Age</label>
-    <input type="number" th:field="*{age}" id="age"/>
+    <input type="number" th:field="*{age}" id="age" min="0" oninput="validity.valid||(value='');" required/>
     <br>
     <label for="email">Email</label>
-    <input type="email" th:field="*{email}" id="email"/>
+    <input type="email" th:field="*{email}" id="email" required/>
     <br>
     <label for="password">Password</label>
-    <input type="password" th:field="*{password}" id="password"/>
+    <input type="password" th:field="*{password}" id="password" required/>
     <br>
     <label>
         <select size="3" multiple="multiple" name="roles" id="roles">

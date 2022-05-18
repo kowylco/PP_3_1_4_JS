@@ -9,6 +9,9 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 @Controller
 public class AdminController {
     private final UserService userService;
@@ -18,21 +21,10 @@ public class AdminController {
     }
 
     @GetMapping("/admin")
-    public String start(@AuthenticationPrincipal User principal, @ModelAttribute("new_user") User newUser, @ModelAttribute("edit_user") User editUser, Model model) {
+    public String start(@AuthenticationPrincipal User principal, @ModelAttribute("new_user") User newUser, Model model) {
         model.addAttribute("principal", principal);
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findAll().stream().sorted(Comparator.comparingLong(User::getId)).collect(Collectors.toList()));
         return "/admin";
-    }
-
-    @GetMapping("/user/{id}")
-    public String showUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.findByID(id));
-        return "/admin/user";
-    }
-
-    @GetMapping("/user-create")
-    public String createUserForm(@ModelAttribute("user") User user) {
-        return "/admin/user-create";
     }
 
     @PostMapping("/user-create")
@@ -41,21 +33,16 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/user-update/{id}")
-    public String userUpdateForm(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.findByID(id));
-        return "/admin/user-update";
-    }
-
     @PostMapping("/user-update")
-    public String userUpdate(User user) {
+    public String userUpdate(@ModelAttribute("edit_user") User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
     @GetMapping("/user-delete/{id}")
-    public String userDelete(@PathVariable("id") int id) {
+    public String userDelete(@PathVariable("id") long id) {
         userService.deleteById(id);
         return "redirect:/admin";
     }
+
 }

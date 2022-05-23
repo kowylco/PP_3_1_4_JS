@@ -111,14 +111,3 @@ function showDeleteModal(id) {
     deleteModal.show()
 }
 
-
-// let editButtons = document.querySelectorAll(".editbtn.btn.btn-primary")
-// let deleteButtons = document.querySelectorAll(".deletebtn")
-console.log(editButtons)
-console.log(deleteButtons)
-for (let btn of editButtons) {
-    btn.addEventListener("click", () => {
-        btn.parentElement.parentElement.childNodes[1].textContent = "sdfsdgfsdfgdsfg"
-        console.log('sdfdfgdg')
-    })
-}

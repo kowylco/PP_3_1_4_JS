@@ -24,6 +24,7 @@ public class AdminController {
     public String start(@AuthenticationPrincipal User principal, @ModelAttribute("new_user") User newUser, Model model) {
         model.addAttribute("principal", principal);
         model.addAttribute("users", userService.findAll().stream().sorted(Comparator.comparingLong(User::getId)).collect(Collectors.toList()));
+        model.addAttribute("user", principal);
         return "/admin";
     }
 

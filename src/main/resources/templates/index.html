@@ -149,7 +149,7 @@
                                     <option selected value="1">USER</option>
                                     <option value="2">ADMIN</option>
                                 </select>
-                                <input class="hidden" type="submit" id="edit_submit">
+                                <input class="hidden" type="submit" id="edit_submit" hidden>
                             </form>
                         </div>
                     </div>
@@ -177,17 +177,17 @@
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_id">Id</label>
                                 <input class="form-control" type="text" readonly id="delete_id" required name="id"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_firstname">First name</label>
-                                <input class="form-control" type="text" id="delete_firstname" required name="firstname"/>
+                                <input class="form-control" type="text" readonly id="delete_firstname" required name="firstname"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_lastname">Last name</label>
-                                <input class="form-control" type="text" id="delete_lastname" required name="lastname"/>
+                                <input class="form-control" type="text" readonly id="delete_lastname" required name="lastname"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_age">Age</label>
-                                <input class="form-control" type="number" id="delete_age" min="0" oninput="validity.valid||(value='');" required name="age"/>
+                                <input class="form-control" type="number" readonly id="delete_age" min="0" oninput="validity.valid||(value='');" required name="age"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_email">Email</label>
-                                <input class="form-control" type="email" id="delete_email" required name="email"/>
+                                <input class="form-control" type="email" readonly id="delete_email" required name="email"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_password">Password</label>
-                                <input class="form-control" type="password" id="delete_password" name="password"/>
+                                <input class="form-control" type="password" readonly id="delete_password" name="password"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_roles">Role</label>
-                                <select class="form-control" size="3" multiple="multiple" name="roles" id="delete_roles">
+                                <select class="form-control" size="3" multiple="multiple" name="roles" id="delete_roles" disabled>
                                     <option selected value="1">USER</option>
                                     <option value="2">ADMIN</option>
                                 </select>

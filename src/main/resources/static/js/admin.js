@@ -1,5 +1,5 @@
-const usersUrl = document.URL + "api/admin/users"
-const userUrl = document.URL + "api/user"
+const usersUrl = "/api/admin/users"
+const userUrl = "/api/user"
 console.log(usersUrl)
 console.log(userUrl)
 

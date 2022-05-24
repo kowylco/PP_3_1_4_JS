@@ -8,7 +8,9 @@ const principalRoles = document.querySelector("#principal-roles")
 const usersTable = document.querySelector("#users-table")
 const editModal = new bootstrap.Modal(document.querySelector("#editModal"))
 const deleteModal = new bootstrap.Modal(document.querySelector("#deleteModal"))
+const usersTab = new bootstrap.Tab(document.querySelector("#nav-home-tab"))
 const editSubmitButton = document.querySelector("#edit_submit")
+const addForm = document.querySelector("#add-form")
 const deleteSubmitButton = document.querySelector("#delete_submit")
 
 let addListeners = function () {
@@ -155,4 +157,51 @@ editSubmitButton.addEventListener("click", () => {
     const res = sendForm(user, "PUT")
     console.log(res)
     editModal.hide()
+})
+
+addForm.addEventListener("submit", event => {
+    event.preventDefault()
+    const firstname = document.querySelector("#firstname").value
+    const lastname = document.querySelector("#lastname").value
+    const age = document.querySelector("#age").value
+    const email = document.querySelector("#email").value
+    const password = document.querySelector("#password").value
+    let roles = []
+    document.querySelector("#roles").childNodes.forEach((role) => {
+        if (role.selected) {
+            roles.push({
+                "id":role.value,
+                "name": "ROLE_" + role.textContent
+            })
+        }
+    })
+
+    const user = {
+        "firstname":firstname,
+        "lastname":lastname,
+        "age":age,
+        "email":email,
+        "password":password,
+        "roles":roles
+    }
+    console.log(user)
+    const res = sendForm(user, "POST")
+    console.log(res)
+    document.querySelector("#firstname").value = ""
+    document.querySelector("#lastname").value = ""
+    document.querySelector("#age").value = 0
+    document.querySelector("#email").value = ""
+    document.querySelector("#password").value = ""
+    usersTab.show()
+})
+
+deleteSubmitButton.addEventListener("click", () => {
+    const id = document.querySelector("#delete_id").value
+    fetch(usersUrl + "/" + id, {
+        'method': 'DELETE'
+    })
+        .then(() => {
+            fillUsersTable().then(addListeners)
+            deleteModal.hide()
+        })
 })

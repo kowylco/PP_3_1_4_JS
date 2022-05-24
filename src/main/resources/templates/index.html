@@ -89,7 +89,7 @@
                     <div class="bg-white border-top">
                         <div class="row justify-content-md-center">
                             <div class="col-md-auto text-center">
-                                <form method="POST">
+                                <form id="add-form">
                                     <label class="form-label fw-bold pt-3 mb-0" for="firstname">First name</label>
                                     <input class="form-control" type="text" id="firstname" required/>
                                     <label class="form-label fw-bold pt-3 mb-0" for="lastname">Last name</label>
@@ -105,7 +105,7 @@
                                         <option selected value="1">USER</option>
                                         <option value="2">ADMIN</option>
                                     </select>
-                                    <input class="btn btn-success m-3" type="submit" value="Add new user">
+                                    <button type="submit" id="add_submit" class="btn btn-danger">Add new user</button>
                                 </form>
                             </div>
                         </div>

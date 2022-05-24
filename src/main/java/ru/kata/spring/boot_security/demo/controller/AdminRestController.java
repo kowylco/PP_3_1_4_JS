@@ -33,7 +33,7 @@ public class AdminRestController {
         return user;
     }
 
-    @PatchMapping("/users")
+    @PutMapping("/users")
     public User updateUser(@RequestBody User user) {
         userService.saveUser(user);
         return user;

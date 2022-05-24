@@ -8,8 +8,31 @@ const principalRoles = document.querySelector("#principal-roles")
 const usersTable = document.querySelector("#users-table")
 const editModal = new bootstrap.Modal(document.querySelector("#editModal"))
 const deleteModal = new bootstrap.Modal(document.querySelector("#deleteModal"))
-let editButtons
-let deleteButtons
+const editSubmitButton = document.querySelector("#edit_submit")
+const deleteSubmitButton = document.querySelector("#delete_submit")
+
+let addListeners = function () {
+    let editButtons = document.querySelectorAll(".editbtn")
+    let deleteButtons = document.querySelectorAll(".deletebtn")
+    editButtons.forEach((btn) => {
+        console.log(btn);
+        let id = btn.parentElement.parentElement.childNodes[1].textContent
+        console.log(id);
+        btn.addEventListener("click", () => {
+            showEditModal(id)
+        })
+    })
+    deleteButtons.forEach((btn) => {
+        console.log(btn);
+        let id = btn.parentElement.parentElement.childNodes[1].textContent
+        console.log(id);
+        btn.addEventListener("click", () => {
+            showDeleteModal(id)
+        })
+    })
+    console.log(editButtons)
+    console.log(deleteButtons)
+}
 
 fetch(userUrl)
     .then(response => response.json())
@@ -60,28 +83,7 @@ await fetch(usersUrl)
         }
     })
 }
-fillUsersTable().then(() => {
-    editButtons = document.querySelectorAll(".editbtn")
-    deleteButtons = document.querySelectorAll(".deletebtn")
-    editButtons.forEach((btn) => {
-        console.log(btn);
-        let id = btn.parentElement.parentElement.childNodes[1].textContent
-        console.log(id);
-        btn.addEventListener("click", () => {
-            showEditModal(id)
-        })
-    })
-    deleteButtons.forEach((btn) => {
-        console.log(btn);
-        let id = btn.parentElement.parentElement.childNodes[1].textContent
-        console.log(id);
-        btn.addEventListener("click", () => {
-            showDeleteModal(id)
-        })
-    })
-    console.log(editButtons)
-    console.log(deleteButtons)
-})
+fillUsersTable().then(addListeners)
 
 function showEditModal(id) {
     fetch(usersUrl + "/" + id)
@@ -111,3 +113,46 @@ function showDeleteModal(id) {
     deleteModal.show()
 }
 
+async function sendForm(user = {}, method = "POST", url = usersUrl) {
+    await fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(() => {
+        fillUsersTable().then(addListeners)
+    })
+}
+
+editSubmitButton.addEventListener("click", () => {
+    const id = document.querySelector("#edit_id").value
+    const firstname = document.querySelector("#edit_firstname").value
+    const lastname = document.querySelector("#edit_lastname").value
+    const age = document.querySelector("#edit_age").value
+    const email = document.querySelector("#edit_email").value
+    const password = document.querySelector("#edit_password").value
+    let roles = []
+        document.querySelector("#edit_roles").childNodes.forEach((role) => {
+            if (role.selected) {
+                roles.push({
+                    "id":role.value,
+                    "name": "ROLE_" + role.textContent
+                })
+            }
+        })
+
+    const user = {
+        "id":id,
+        "firstname":firstname,
+        "lastname":lastname,
+        "age":age,
+        "email":email,
+        "password":password,
+        "roles":roles
+    }
+    console.log(user)
+    const res = sendForm(user, "PUT")
+    console.log(res)
+    editModal.hide()
+})

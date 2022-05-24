@@ -131,7 +131,7 @@
                 <div class="modal-body">
                     <div class="row justify-content-md-center">
                         <div class="col-md-auto text-center">
-                            <form th:method="POST">
+                            <form>
                                 <label class="form-label fw-bold pt-3 mb-0" for="edit_id">Id</label>
                                 <input class="form-control" type="text" readonly id="edit_id" required name="id"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="edit_firstname">First name</label>
@@ -149,14 +149,14 @@
                                     <option selected value="1">USER</option>
                                     <option value="2">ADMIN</option>
                                 </select>
-                                <input class="hidden" type="submit" id="edit_submit" hidden>
+                                <input class="hidden" type="submit" hidden>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <label for="edit_submit" type="button" class="btn btn-danger">Edit</label>
+                    <button type="button" id="edit_submit" class="btn btn-danger">Edit</button>
                 </div>
             </div>
         </div>
@@ -173,7 +173,7 @@
                 <div class="modal-body">
                     <div class="row justify-content-md-center">
                         <div class="col-md-auto text-center">
-                            <form th:method="POST">
+                            <form>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_id">Id</label>
                                 <input class="form-control" type="text" readonly id="delete_id" required name="id"/>
                                 <label class="form-label fw-bold pt-3 mb-0" for="delete_firstname">First name</label>
@@ -197,7 +197,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <button type="button" id="delete_submit" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>

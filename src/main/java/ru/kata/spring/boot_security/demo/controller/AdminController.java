@@ -25,7 +25,7 @@ public class AdminController {
         model.addAttribute("principal", principal);
         model.addAttribute("users", userService.findAll().stream().sorted(Comparator.comparingLong(User::getId)).collect(Collectors.toList()));
         model.addAttribute("user", principal);
-        return "/admin";
+        return "/index";
     }
 
     @PostMapping("/user-create")

@@ -27,12 +27,12 @@
             <div class="position-sticky pt-3">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="/admin" class="nav-link active m-0" aria-current="page" >
+                        <a id="admin-link" href="#" class="nav-link active m-0" aria-current="page" >
                             Admin
                         </a>
                     </li>
                     <li>
-                        <a href="/user" class="nav-link link-dark">
+                        <a id="user-link" href="#" class="nav-link link-dark">
                             User
                         </a>
                     </li>
@@ -40,7 +40,7 @@
             </div>
         </nav>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+        <main id="admin-panel" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light" style="display: block">
             <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand">
                 <div class="">
                 </div>
@@ -118,6 +118,46 @@
 
 
         </main>
+
+        <main id="user-panel" class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light" style="display: none">
+            <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+                <h1 class="h1">User information-page</h1>
+            </div>
+
+            <div class="bg-light border">
+                <h3 class="h4 p-3 m-0">About user</h3>
+
+                <div class="table-responsive p-3 bg-white border-top">
+                    <table class="table table-striped border-top">
+                        <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td id="auth-id"></td>
+                            <td id="auth-firstname"></td>
+                            <td id="auth-lastname"></td>
+                            <td id="auth-age"></td>
+                            <td id="auth-email"></td>
+                            <td>
+                            <span id="auth-roles">
+                            </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
     </div>
 </div>
 <!-- EDIT Modal -->

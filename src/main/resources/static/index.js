@@ -12,6 +12,10 @@ const usersTab = new bootstrap.Tab(document.querySelector("#nav-home-tab"))
 const editSubmitButton = document.querySelector("#edit_submit")
 const addForm = document.querySelector("#add-form")
 const deleteSubmitButton = document.querySelector("#delete_submit")
+const adminLink = document.querySelector("#admin-link")
+const adminPanel = document.querySelector("#admin-panel")
+const userLink = document.querySelector("#user-link")
+const userPanel = document.querySelector("#user-panel")
 
 let addListeners = function () {
     let editButtons = document.querySelectorAll(".editbtn")
@@ -39,12 +43,21 @@ let addListeners = function () {
 fetch(userUrl)
     .then(response => response.json())
     .then(user => {
+        document.querySelector("#auth-id").textContent = user.id
+        document.querySelector("#auth-firstname").textContent = user.firstname
+        document.querySelector("#auth-lastname").textContent = user.lastname
+        document.querySelector("#auth-age").textContent = user.age
+        document.querySelector("#auth-email").textContent = user.email
         principalUsername.textContent = user.email
         console.log(user.roles)
+        let authRoles = ""
         for (let role of user.roles) {
             console.log(role.name)
-            principalRoles.textContent += role.name.replace("ROLE_", "") + " "
+            authRoles += role.name.replace("ROLE_", "") + " "
+
         }
+        principalRoles.textContent = authRoles
+        document.querySelector("#auth-roles").textContent = authRoles
     })
 
 async function fillUsersTable() {
@@ -204,4 +217,18 @@ deleteSubmitButton.addEventListener("click", () => {
             fillUsersTable().then(addListeners)
             deleteModal.hide()
         })
+})
+
+userLink.addEventListener("click", () => {
+    adminLink.classList.remove("active")
+    userLink.classList.add("active")
+    adminPanel.setAttribute("style", "display: none")
+    userPanel.setAttribute("style", "display: block")
+})
+
+adminLink.addEventListener("click", () => {
+    userLink.classList.remove("active")
+    adminLink.classList.add("active")
+    userPanel.setAttribute("style", "display: none")
+    adminPanel.setAttribute("style", "display: block")
 })

@@ -20,6 +20,12 @@ public class RoleService {
         return roleRepository.findAll();
     }
 
+    public void saveRole(String roleName) {
+        Role role = new Role();
+        role.setName(roleName);
+        roleRepository.save(role);
+    }
+
     public Set<Role> getSetOfRoles(String[] roles) {
         Set<Role> roleSet = new HashSet<>();
         for (String role : roles) {

@@ -21,9 +21,11 @@ public class RoleService {
     }
 
     public void saveRole(String roleName) {
-        Role role = new Role();
-        role.setName(roleName);
-        roleRepository.save(role);
+        if (roleRepository.findByName(roleName) == null) {
+            Role role = new Role();
+            role.setName(roleName);
+            roleRepository.save(role);
+        }
     }
 
     public Set<Role> getSetOfRoles(String[] roles) {
